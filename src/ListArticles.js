@@ -70,7 +70,7 @@ const ListArticles = () => {
             <Button style={{marginTop:'20px'}} onClick={handleSort} type="primary">Sort theo ID</Button>
             <br/>
            
-            <Input style={{width:'170px',marginTop:'20px'}}value={search} onChange={(e)=>handleonChangesearch(e)} placeholder="Basic usage" /> <Button onClick={handlesearch} type="primary">Search</Button>
+            <Input style={{width:'170px',marginTop:'20px'}}value={search} onChange={(e)=>handleonChangesearch(e)} placeholder="Tìm kiếm theo Title,Content" /> <Button onClick={handlesearch} type="primary">Search</Button>
 
             <div>
             {articles.map((item) => {
