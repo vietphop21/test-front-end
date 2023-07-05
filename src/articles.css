@@ -23,3 +23,11 @@ img{
     align-items: center;
     justify-content: center;
 }
+.btndelete{
+    border-radius: 5px 5px 5px 5px;
+    padding: 2px;
+    width: 141px;
+    color: #fff;
+    background-color: #ff1627;
+    box-shadow: 0 2px 0;
+}

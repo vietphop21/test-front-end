@@ -1,7 +1,6 @@
 import { Button, Modal } from 'antd';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { fetchDetailsArticles } from './services/Userservices';
 
 const DetailsArticles = (props) => {
     const [details, setDetails] = useState()

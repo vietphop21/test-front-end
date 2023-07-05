@@ -1,15 +1,16 @@
 import { Button, Modal } from 'antd';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { fetchDetailsArticles } from './services/Userservices';
 import { Input } from 'antd';
+import { toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 const EditArticles = (props) => {
 
 
     let { item,render,setRender } = props
-    const [newtitle,setNewtitle]=useState(item.title)
-    const [newcontent,setnewcontent]=useState(item.content)
+    const [newtitle,setNewtitle]=useState()
+    const [newcontent,setnewcontent]=useState()
     const [isModalOpen, setIsModalOpen] = useState(false);
     const showModal = () => {
         setIsModalOpen(true);
@@ -24,20 +25,23 @@ const EditArticles = (props) => {
             content:newcontent
         })
         setRender(!render)
+        toast.success("Edit thành công!!")
     };
     const handleCancel = () => {
         setIsModalOpen(false);
     };
     return (
         <>
+                    <ToastContainer/>
+
             {
             }
             <Button type="primary" onClick={showModal}>
                 Edit Articles
             </Button>
             <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-                Title:  <Input placeholder="Basic usage" value={newtitle} onChange={(e)=>setNewtitle(e.target.value)}/> 
-                Content:  <Input placeholder="Basic usage"  value={newcontent}  onChange={(e)=>setnewcontent(e.target.value)} /> 
+                Title:  <Input placeholder="Nhập Title mới" value={newtitle} onChange={(e)=>setNewtitle(e.target.value)}/> 
+                Content:  <Input placeholder="Nhập Content mới "  value={newcontent}  onChange={(e)=>setnewcontent(e.target.value)} /> 
             </Modal>
         </>
     );

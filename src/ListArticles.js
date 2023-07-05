@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import './articles.css'
 import DetailsArticles from './DetailsArticles'
-import { fetchArticles } from './services/Userservices'
 import ReactPaginate from 'react-paginate'
 import CreateArticles from './CreateArticles'
 import EditArticles from './EditArticles'
 import { Button } from 'antd'
 import {Input} from 'antd'
+import { ToastContainer, toast } from 'react-toastify'
 const ListArticles = () => {
     const [render,setRender]=useState(false)
     const [page,setPage]=useState(1)
@@ -54,10 +54,16 @@ const ListArticles = () => {
         let res=await axios.get (`https://617b71c2d842cf001711bed9.mockapi.io/api/v1/blogs?sortBy=id&order=desc`)
         setArticles(res.data)
     }
+    const handleDelete =async (id)=>{
+        let res = await axios.delete(`https://617b71c2d842cf001711bed9.mockapi.io/api/v1/blogs/${id}`)
+        toast.success("Delete success!")
+        setRender(!render)
+    }
     return (
         <>
         
             <div class="titleproject">List Articles</div>
+            <ToastContainer/>
             
             <CreateArticles/>
             <br/>
@@ -88,6 +94,7 @@ const ListArticles = () => {
                                 <DetailsArticles
                                 id={item.id}
                                 />
+                                <button class="btndelete" type="button" onClick={()=>handleDelete(item.id)}>Delete</button>
                                 
                                 
                             </div>
